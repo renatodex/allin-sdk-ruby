@@ -12,3 +12,8 @@ group :development do
   gem "jeweler", "~> 2.0.1"
   gem "simplecov", ">= 0"
 end
+
+gem "httparty"
+gem 'configatron'
+gem "colorize"
+gem "pry"
