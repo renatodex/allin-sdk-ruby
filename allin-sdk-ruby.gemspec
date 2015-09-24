@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "allin-sdk-ruby.gemspec",
     "lib/allin-sdk-ruby.rb",
     "lib/allin-sdk-ruby/config/default.rb",
     "lib/allin-sdk-ruby/facade/allin.rb",
