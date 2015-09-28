@@ -18,7 +18,11 @@ module AllinSDK
 
       def self.api_get(method, params={})
         puts "[GET] starting request to Allin at \##{method} with params: #{params}".light_blue
-        result = self.send("get", "/allinapi?method=#{method}", params)
+
+        uri_params = ::Addressable::URI.new
+        uri_params.query_values = params
+
+        result = self.send("get", "/allinapi?method=#{method}&#{uri_params.query}", {})
         puts "[GET] request response from backend: #{result}".green
         self.parse_response result.body
       end

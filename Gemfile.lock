@@ -78,6 +78,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   bundler (~> 1.0)
   colorize
   configatron
@@ -87,6 +88,3 @@ DEPENDENCIES
   rdoc (~> 3.12)
   rspec (~> 2.8.0)
   simplecov
-
-BUNDLED WITH
-   1.10.6

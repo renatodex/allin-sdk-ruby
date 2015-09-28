@@ -17,3 +17,4 @@ gem "httparty"
 gem 'configatron'
 gem "colorize"
 gem "pry"
+gem "addressable"
