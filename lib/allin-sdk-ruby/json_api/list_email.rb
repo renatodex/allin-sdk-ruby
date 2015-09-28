@@ -6,6 +6,7 @@ module AllinSDK
       def self.insert(list, email, merge_data)
         AllinSDK::JsonAPI::Facade.api_post(self.insert_method_name, {
           "nm_lista" => list,
+          "nm_email" => email,
           "campos" => self.build_fields(merge_data),
           "valor" => self.build_values(merge_data)
         })
