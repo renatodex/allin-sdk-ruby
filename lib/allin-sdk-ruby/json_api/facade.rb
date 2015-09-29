@@ -22,16 +22,23 @@ module AllinSDK
         uri_params = ::Addressable::URI.new
         uri_params.query_values = params
 
-        result = self.send("get", "/allinapi?method=#{method}&#{uri_params.query}", {})
+        result = self.send("get", "/allinapi/?method=#{method}&#{uri_params.query}", {})
         puts "[GET] request response from backend: #{result}".green
         self.parse_response result.body
       end
 
       def self.api_post(method, params={})
+        options = {
+          :body => params,
+          :headers => {
+             'Cache-Control' => 'no-cache'
+          }
+        }
+
         puts "[POST] starting request to Allin at \##{method} with params: #{params}".light_blue
-        result = self.send("post", "/allinapi?method=#{method}", params)
+        result = self.send("post", "/allinapi/?method=#{method}", options)
         puts "[POST] request response from backend: #{result}".green
-        self.parse_response result.body
+        result
       end
     end
   end

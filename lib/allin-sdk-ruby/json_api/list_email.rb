@@ -4,12 +4,17 @@ module AllinSDK
       extend Helpers::Builder
 
       def self.insert(list, email, merge_data)
+        fields = self.build_fields({nm_email: email}.merge(merge_data))
+        values = self.build_values({nm_email: email}.merge(merge_data))
+
         AllinSDK::JsonAPI::Facade.api_post(self.insert_method_name, {
-          "nm_lista" => list,
-          "nm_email" => email,
-          "campos" => self.build_fields(merge_data),
-          "valor" => self.build_values(merge_data)
+          "dados_email" => {
+            "nm_lista" => list,
+            "campos" => fields,
+            "valor" => values
+          }.to_json
         })
+
       end
 
       def self.remove(list, email)
