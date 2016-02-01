@@ -2,10 +2,15 @@ module AllinSDK
   module JsonAPI
     class Facade
       include ::HTTParty
+      debug_output $stdout
       base_uri configatron.allinsdk_api_uri
       default_params ({
         :output => "json"
       })
+
+      def self.set_base_uri(uri)
+        self.base_uri uri
+      end
 
       def self.parse_response(response)
         begin
@@ -25,8 +30,11 @@ module AllinSDK
         uri_params.query_values = query_values
 
         puts "[GET] <- starting request to Allin at \##{method} with params: #{params}".light_blue
-        result = self.send("get", "/allinapi/?method=#{method}&#{uri_params.query}", {})
+        result = self.send("get", "/?method=#{method}&#{uri_params.query}", {})
         puts "[GET] -> request response from backend: #{result}".green
+
+        self.set_base_uri(configatron.allinsdk_api_uri)
+
         self.parse_response result.body
       end
 
@@ -40,8 +48,10 @@ module AllinSDK
         }
 
         puts "[POST] <- starting request to Allin at \##{method} with params: #{body_params}".light_blue
-        result = self.send("post", "/allinapi/?method=#{method}", options)
+        result = self.send("post", "/?method=#{method}", options)
         puts "[POST] -> request response from backend: #{result}".green
+
+        # self.set_base_uri(configatron.allinsdk_api_uri)
 
         self.parse_response result.body
       end

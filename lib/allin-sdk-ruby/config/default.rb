@@ -1,10 +1,15 @@
 require 'configatron'
 
-configatron.allinsdk_api_uri = "http://painel02.allinmail.com.br"
-configatron.allinsdk_api_login = "yourlogin"
-configatron.allinsdk_api_password = "yourpassword"
+configatron.allinsdk_api_uri = "http://painel02.allinmail.com.br/allinapi"
+configatron.allinsdk_api_uri_transactional = "https://transacional01.postmatic.com.br/api"
+configatron.allinsdk_api_login = "basico.com"
+configatron.allinsdk_api_password = "123mudar"
+configatron.allinsdk_api_login_transactional = "basico.com"
+configatron.allinsdk_api_password_transactional = "123mudar"
 configatron.allinsdk_api_list_email_insert_method = "inserir_email_base"
 configatron.allinsdk_api_list_email_remove_method = "remover_email_base"
 configatron.allinsdk_api_list_token_method = "get_token"
+configatron.allinsdk_api_list_transactional_token_method = "get_token"
 configatron.allinsdk_api_optout_insert_method = "inserir_email_optout"
 configatron.allinsdk_api_optout_remove_method = "remover_email_optout"
+configatron.allinsdk_api_transactionemail_method = "enviar_email"
